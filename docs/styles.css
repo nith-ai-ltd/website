@@ -268,7 +268,7 @@ h2 { font-weight: 720; font-stretch: 112%; text-transform: uppercase; font-size:
 .cta {
   background-color: var(--k);
   background-image: linear-gradient(#262626 1px, transparent 1px), linear-gradient(90deg, #262626 1px, transparent 1px);
-  background-size: 40px 40px; color: #FFF; text-align: center; padding: clamp(90px, 12vw, 160px) var(--pad); scroll-margin-top: var(--nav);
+  background-size: 40px 40px; background-position: center bottom; color: #FFF; text-align: center; padding: clamp(90px, 12vw, 160px) var(--pad); scroll-margin-top: var(--nav);
 }
 .cta .label { color: #BDBDBD; }
 .cta h2 { margin: 16px auto 18px; max-width: 14ch; }
@@ -294,8 +294,12 @@ h2 { font-weight: 720; font-stretch: 112%; text-transform: uppercase; font-size:
 .honest li { border-top: 1px solid #3C3C3C; padding-top: 12px; color: #D6D6D6; line-height: 1.4; }
 
 /* ---------- footer */
-.footer { max-width: 1440px; margin: 0 auto; padding: 0 var(--pad) var(--pad); }
-.foot-card { background: #000; color: #EDEDED; border-radius: 16px; padding: clamp(36px, 4.6vw, 64px) clamp(24px, 3.6vw, 48px) 26px; }
+.footer {
+  background-color: var(--k);
+  background-image: linear-gradient(#262626 1px, transparent 1px), linear-gradient(90deg, #262626 1px, transparent 1px);
+  background-size: 40px 40px; background-position: center top; padding: 0 var(--pad) var(--pad);
+}
+.foot-card { max-width: calc(1440px - 2 * var(--pad)); margin: 0 auto; background: #000; color: #EDEDED; border-radius: 16px; padding: clamp(36px, 4.6vw, 64px) clamp(24px, 3.6vw, 48px) 26px; }
 .foot-top { display: grid; grid-template-columns: 1.15fr 2fr; gap: 40px; padding-bottom: clamp(44px, 6vw, 88px); border-bottom: 1px solid #222; }
 .foot-logo { display: inline-flex; color: #fff; }
 .foot-logo svg { height: 24px; width: auto; fill: currentColor; }
