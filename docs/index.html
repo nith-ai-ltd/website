@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NITH · Independent testing for robot AI</title>
+  <meta name="description" content="NITH is an independent test lab for robot AI. We measure how often a robot succeeds at a real job, how often a person has to step in, and why it fails.">
+  <meta name="theme-color" content="#171717">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=19">
+  <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.js" } }</script>
+  <link rel="modulepreload" href="vendor/three/three.core.js">
+  <link rel="modulepreload" href="vendor/three/three.module.js">
+  <link rel="modulepreload" href="js/story.js?v=36">
+</head>
+<body>
+  <a class="skip" href="#how">Skip the story</a>
+
+  <header class="nav is-dark" id="nav">
+    <a class="nav-logo" href="#top" aria-label="NITH, back to the top">
+      <!-- the horizontal logo: the arc N mark and the name at 70% of its height (brand/logo/NITH-logo-black.svg) -->
+      <svg viewBox="0 0 546 100" aria-hidden="true"><rect width="24" height="100"/><rect x="137" width="24" height="100"/><path d="M30.5 0A100 100 0 0 1 130.5 100H105A74.5 74.5 0 0 0 30.5 25.5Z"/><path d="M217 15L225.4 15L225.4 85L217 85ZM298.2 15L306.6 15L306.6 85L298.2 85ZM217 15L232.282 15L306.6 85L291.318 85ZM327.6 15L336 15L336 85L327.6 85ZM357 15L435.4 15L435.4 23.4L357 23.4ZM392 15L400.4 15L400.4 85L392 85ZM456.4 15L464.8 15L464.8 85L456.4 85ZM537.6 15L546 15L546 85L537.6 85ZM456.4 45.8L546 45.8L546 54.2L456.4 54.2Z"/></svg>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#how">How we test</a>
+      <a href="#criteria">What we check</a>
+      <a href="#robots">Robots</a>
+      <a href="#about">About</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="story" id="story" aria-label="How NITH tests robot AI, in twelve shots">
+      <div class="stage" id="stage">
+        <div class="frame" id="frame">
+          <canvas id="world" aria-hidden="true"></canvas>
+          <div class="vignette" aria-hidden="true"></div>
+          <div class="grain" aria-hidden="true"></div>
+          <div class="flash" id="flash" aria-hidden="true"></div>
+
+          <div class="marks" aria-hidden="true">
+            <div class="mk3d" data-m="packing"><i>01</i><span>The shiny packet slipped</span></div>
+            <div class="mk3d" data-m="humanoid"><i>02</i><span id="mk-stuck">Stuck · 00:00</span></div>
+            <div class="mk3d" data-m="hand" data-side="left"><i>03</i><span>Asked for the screwdriver · picked the pliers</span></div>
+            <div class="mk3d" data-m="rover"><i>04</i><span>Didn't see the glass door</span></div>
+          </div>
+
+          <div class="cold" id="cold">
+            <p class="cold-1">We crash-test robot AI.</p>
+            <p class="cold-2"><span id="type">On your buyer's real job.</span><i class="caret" aria-hidden="true"></i></p>
+            <p class="cold-3">We test your robot AI on your customer's real job: thousands of runs in simulation, then on a real robot. One page your buyer can trust.</p>
+            <div class="cold-cta"><a class="btn btn-orange" href="#play" data-play>Watch the 2-minute story ↓</a><a class="btn btn-outline" href="#contact">Book a test call</a></div>
+          </div>
+          <div class="kicker" id="kicker"><h1>NITH · Independent testing for robot AI</h1></div>
+
+          <div class="tele" id="tele" aria-hidden="true">
+            <span>Run <b id="t-run">0001</b></span>
+            <span>Failures <b id="t-fail">00</b></span>
+          </div>
+
+          <div class="panel findings" id="findings">
+            <div class="claim" id="claim">
+              <div><span class="pill">Maker's claim</span><span class="mono dim">Their own demo set</span></div>
+              <div class="big">99%</div>
+              <p>Success in the maker's own demo set.</p>
+              <span class="mono dim">No failure reasons · no method</span>
+            </div>
+            <div class="measured" id="measured">
+              <div><span class="pill pill-orange">Measured by NITH</span><span class="mono dim">Your job · 1,000 runs</span></div>
+              <div class="big" id="measured-n">94 / 100</div>
+              <dl class="rows">
+                <div><dt>Likely range</dt><dd>92–95 out of 100</dd></div>
+                <div><dt>A person steps in</dt><dd class="o">4 times an hour</dd></div>
+                <div><dt>Time per item</dt><dd>9 s · a person: 6 s</dd></div>
+                <div><dt>In bright light</dt><dd class="o">71 out of 100</dd></div>
+                <div><dt>Fails most on</dt><dd>Shiny packets</dd></div>
+              </dl>
+              <span class="mono dim">Example · not real results</span>
+            </div>
+          </div>
+
+          <div class="panel score" id="score">
+            <div class="sheet" id="sheet">
+              <div class="sheet-head"><span>NITH · SCORECARD · <b id="ver">v1.0</b></span><span>EXAMPLE</span></div>
+              <div class="sheet-title">Grocery-packing robot · 1,000 runs</div>
+              <div class="sheet-big"><span id="score-n">94</span> / 100<small>packs right</small></div>
+              <dl class="rows rows-light">
+                <div><dt>Likely range</dt><dd id="r-range">92–95 out of 100</dd></div>
+                <div><dt>A person steps in</dt><dd class="o" id="r-step">4 times an hour</dd></div>
+                <div><dt>Time per item</dt><dd id="r-speed">9 s · a person: 6 s</dd></div>
+                <div><dt>In bright light</dt><dd class="o" id="r-change">71 out of 100</dd></div>
+                <div><dt>Fails most on</dt><dd>Shiny packets</dd></div>
+                <div><dt>Near misses with people</dt><dd>0</dd></div>
+              </dl>
+              <div class="sheet-foot"><span class="badge" id="stamp">Retested</span><span class="mono dim">Method published</span></div>
+            </div>
+          </div>
+
+          <div class="captions">
+            <div class="cap" data-s="1"><span class="cap-k">01 · The maker's demo</span><p class="h">Every robot looks perfect in its demo.</p><p class="sub">Makers film their best take. This one took 47 tries.</p></div>
+            <div class="cap cap-center" data-s="2"><p class="h">Lights on.</p></div>
+            <div class="cap" data-s="2"><span class="cap-k">02 · The test lab</span><p class="h">Now the real test.</p><p class="sub">NITH is an independent test lab for robot AI, the software that decides how a robot moves. We test it on real jobs, not demos.</p></div>
+            <div class="cap cap-bay" data-s="3"><span class="cap-k">Bay 01 · Robot arm · Grocery packing</span>
+              <dl class="beats">
+                <div><dt>The job</dt><dd>A robot arm packs groceries into a crate.</dd></div>
+                <div><dt>What went wrong</dt><dd>A shiny wrapper fooled its camera. The packet slipped out of its grip.</dd></div>
+                <div><dt>What we measure</dt><dd>How often it gets each item right, and which items it fails on most.</dd></div>
+              </dl>
+              <p class="h">On a real job, it slips.</p></div>
+            <div class="cap cap-bay" data-s="4"><span class="cap-k">Bay 02 · Humanoid robot · Carrying parts</span>
+              <dl class="beats">
+                <div><dt>The job</dt><dd>A human-shaped robot carries boxes of parts across a factory.</dd></div>
+                <div><dt>What went wrong</dt><dd>A box was out of place. It froze, unsure what to do next.</dd></div>
+                <div><dt>What we measure</dt><dd>How often a person has to walk over and help. Here, 4 times an hour.</dd></div>
+              </dl>
+              <p class="h">Someone has to step in.</p></div>
+            <div class="cap cap-bay" data-s="5"><span class="cap-k">Bay 03 · Robot hand · Picking a tool</span>
+              <dl class="beats">
+                <div><dt>The job</dt><dd>A robot hand is told, in plain words: "Pick up the screwdriver."</dd></div>
+                <div><dt>What went wrong</dt><dd>It picked up the pliers. Robot AI often follows what it sees, not what it's told.</dd></div>
+                <div><dt>What we measure</dt><dd>How often it does what it was asked, even when the scene changes.</dd></div>
+              </dl>
+              <p class="h">It didn't listen.</p></div>
+            <div class="cap cap-bay" data-s="6"><span class="cap-k">Bay 04 · Delivery robot · Hospital corridor</span>
+              <dl class="beats">
+                <div><dt>The job</dt><dd>A delivery robot carries medicine down a hospital corridor.</dd></div>
+                <div><dt>What went wrong</dt><dd>It didn't see a closed glass door, and drove straight into it.</dd></div>
+                <div><dt>What we measure</dt><dd>Every bump, and every close call with people.</dd></div>
+              </dl>
+              <p class="h">It didn't see the glass.</p></div>
+            <div class="cap" data-s="7"><span class="cap-k">Simulation</span><p class="h">The same job, thousands of times.</p><p class="sub">In a computer copy of the job, we change the light, the positions and the items. Then we repeat the key tests on a real robot.</p></div>
+            <div class="cap" data-s="8"><span class="cap-k">The evidence</span><p class="h">Every failure has a clip.</p><p class="sub">Each mistake is recorded, so the maker can see exactly what went wrong.</p></div>
+            <div class="cap cap-side" data-s="9"><span class="cap-k">The score</span><p class="h">Their claim, next to what we measured.</p><p class="sub">One page a buyer can trust.</p></div>
+            <div class="cap cap-side" data-s="10"><span class="cap-k">Retest</span><p class="h">Fix it. Then retest.</p><p class="sub">When the maker updates its robot AI, we test again, so the maker and its buyers can see what changed.</p></div>
+            <div class="cap cap-final" data-s="11">
+              <p class="h">Got a sale waiting on proof?</p>
+              <a class="btn btn-orange" href="#contact">Book a test call</a>
+            </div>
+          </div>
+          <span class="cue" id="scroll-cue" aria-hidden="true">Scroll ↓</span>
+        </div>
+
+        <div class="filmbar" aria-hidden="true">
+          <i class="bar"><span id="bar"></span></i>
+          <span>SC. <b id="sc-n">01</b> / 12 <em id="sc-name">Cold open</em></span>
+          <span class="hud-ex">Example scenes · not real results</span>
+          <span id="tc">00:00:00:00</span>
+        </div>
+        <span class="slowmo-tag" aria-hidden="true"><i></i>Slow motion · 0.15×</span>
+      </div>
+    </section>
+
+    <section class="sec" id="how">
+      <div class="sec-top">
+        <div><span class="label">[01] How we test</span><h2>From your job to a scorecard.</h2></div>
+        <p class="lead">We test the robot AI on your real job: first thousands of times in simulation, then on a real robot. You get one page your buyers can trust, and the method behind it.</p>
+      </div>
+      <ol class="steps">
+        <li><b>Define the job</b><span>You tell us the task, the items and what counts as success.</span><i>01</i></li>
+        <li><b>Simulate</b><span>Thousands of runs, changing the light, the positions and the packaging.</span><i>02</i></li>
+        <li><b>Test on a real robot</b><span>A smaller set of real trials on your robot, or a matching one.</span><i>03</i></li>
+        <li><b>Scorecard</b><span>How often it succeeds, how fast, how often a person steps in, and why it fails.</span><i>04</i></li>
+        <li class="last"><b>Fix it, then retest</b><span>Every update gets a fresh score, so your buyers can see what changed.</span><i>05</i></li>
+      </ol>
+    </section>
+
+    <section class="sec" id="criteria">
+      <div class="sec-top">
+        <div><span class="label">[02] What we check</span><h2>Six things we measure on every robot.</h2></div>
+        <p class="lead">Every test ends with the same six numbers, so a buyer can compare any robot AI fairly. Each one comes with the videos and the method behind it.</p>
+      </div>
+      <ol class="crit">
+        <li><i>01</i><span class="crit-q">Does it do the job?</span><b>Success rate</b><p>Out of every 100 tries, how many it gets right. We give an honest range, because 1,000 tries tell you more than 10.</p><em>Example: 94 out of 100, likely 92–95</em></li>
+        <li><i>02</i><span class="crit-q">Why does it fail?</span><b>Failure types</b><p>Every failure is sorted: it dropped something, picked the wrong thing, bumped into something or froze. Each one comes with a video clip.</p><em>Example: fails most on shiny packets</em></li>
+        <li><i>03</i><span class="crit-q">How often does a person have to help?</span><b>Step-ins per hour</b><p>Every time someone walks over to help, or takes control from a distance, we count it.</p><em>Example: 4 times an hour</em></li>
+        <li><i>04</i><span class="crit-q">Is it fast enough?</span><b>Speed</b><p>The time each task takes, next to a person doing the same job.</p><em>Example: 9 seconds per item; a person takes 6</em></li>
+        <li><i>05</i><span class="crit-q">Does it cope with change?</span><b>Robustness</b><p>We change the light, the positions, the items and the wording of the instruction, and measure how much the score drops.</p><em>Example: in bright light, 94 drops to 71</em></li>
+        <li><i>06</i><span class="crit-q">Is it safe around people?</span><b>Near misses and bumps</b><p>How close it comes to people, and everything it bumps into. We report what happened. We don't certify.</p><em>Example: 0 near misses, 2 bumps</em></li>
+      </ol>
+      <div class="also"><span class="label">Also on request</span><span>Items damaged</span><span>Remote take-overs</span><span>Hours per battery charge</span><span>Results after every update</span></div>
+      <div class="honest">
+        <span class="label">How we keep the numbers honest</span>
+        <ul>
+          <li>Thousands of runs in simulation, then trials on a real robot</li>
+          <li>The same test for every robot AI</li>
+          <li>An honest range, never one flattering number</li>
+          <li>We publish the full method, so anyone can check it</li>
+          <li>The maker can't edit the result</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" id="robots">
+      <div class="sec-top">
+        <div><span class="label">[03] Any robot. Any robot AI.</span><h2>We test the AI, whatever the body.</h2></div>
+        <p class="lead">We start with robot arms doing manual tasks: picking, packing and handling. That's what today's robot AIs are built for. Open robot AIs and rented ones are tested the same way.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <span class="tag first">First</span>
+          <div class="bot3d" data-robot="arm"><img src="models/cards/arm.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <h3>Robot arms</h3><p>Picking, packing and sorting at a workstation.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Next</span>
+          <div class="bot3d" data-robot="humanoid"><img src="models/cards/humanoid.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <h3>Humanoids</h3><p>Manual tasks in warehouses and shops.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Next</span>
+          <div class="bot3d" data-robot="hand"><img src="models/cards/hand.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <h3>Robot hands</h3><p>Fine grasping of soft, shiny and fragile items.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Later</span>
+          <div class="bot3d" data-robot="mobile"><img src="models/cards/mobile.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <h3>Mobile robots</h3><p>Robots that drive to the job, then pick.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="rules">
+      <div class="sec-top">
+        <div><span class="label">[04] Our rules</span><h2>Independence is the product.</h2></div>
+        <p class="lead">A test is only worth something if nobody can lean on the result. These rules don't bend for anyone, including paying customers.</p>
+      </div>
+      <div class="rules">
+        <div><i>01</i><b>Scores never flatter.</b><span>We report what happened, even when the customer won't like it. Our fee is fixed and never depends on the score.</span></div>
+        <div><i>02</i><b>We don't make robot AI.</b><span>We don't build it, sell it or favour any of it. A referee doesn't play in the match.</span></div>
+        <div><i>03</i><b>Your data stays yours.</b><span>Your videos and logs stay private. We publish only the results you agree to.</span></div>
+        <div><i>04</i><b>We publish the method.</b><span>Anyone can rerun our tests and check our numbers.</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="about">
+      <div class="about-band">
+        <figure class="portrait"><img src="img/founder.webp" srcset="img/founder-640.webp 640w, img/founder.webp 1000w" sizes="(max-width: 900px) 92vw, 40vw" width="1000" height="1250" alt="Deepak Ananthapadman, founder of NITH" loading="lazy" decoding="async"></figure>
+        <div class="band-text">
+          <span class="label">[05] About</span>
+          <p class="statement">We measure robot AI on the real job, and say plainly what we find.</p>
+          <p>Robot makers now build on AI they rent or download, and their buyers are asked to trust a demo. NITH is an independent test lab in London. We test that AI on the buyer's real job, thousands of times in simulation and then on a real robot, and report what happened.</p>
+          <span class="mono band-co">Founded by Deepak Ananthapadman · NITH AI LTD · Registered in England and Wales</span>
+        </div>
+      </div>
+      <div class="trust">
+        <span class="label">Why you can trust the results</span>
+        <h3>Able to do the work, with nothing to gain from a flattering score.</h3>
+        <div class="trust-grid">
+          <div><i>01</i><b>We know what a real job demands.</b><span>Our founder has designed, engineered and delivered robot automation for manufacturers: assembly and packaging lines, a battery-pack line that combines three kinds of robot, and a cell that handles 50 kg bags every two minutes.</span></div>
+          <div><i>02</i><b>We've built robot AI, and measured it.</b><span>For an MSc at Queen Mary University of London, our founder built a vision system that guides a robot's pick, measured at 49.2 ms per frame and within ±2 mm. Every robot AI we test is measured the same careful way.</span></div>
+          <div><i>03</i><b>We test with the tools makers use.</b><span>NVIDIA Isaac Sim, ROS 2 and PyTorch for simulation and AI; ABB, Kawasaki, KUKA and FANUC robot controllers. We build every test with the same tools the makers use.</span></div>
+          <div><i>04</i><b>No stake in any robot. A name on every result.</b><span>We don't build, sell or favour any robot or robot AI. NITH is a UK company, and our founder runs and signs off every test.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <span class="label">[06] Work with us</span>
+      <h2>Got a sale waiting on proof?</h2>
+      <p>We're looking for our first test partners: robot-AI makers who want independent proof for their buyers.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-orange" href="mailto:dee@nith.ai?subject=Test%20call">Book a test call</a>
+        <a class="btn btn-outline" href="mailto:dee@nith.ai">dee@nith.ai</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <svg viewBox="0 0 161 151.277" role="img" aria-label="NITH"><rect width="24" height="100"/><rect x="137" width="24" height="100"/><path d="M30.5 0A100 100 0 0 1 130.5 100H105A74.5 74.5 0 0 0 30.5 25.5Z"/><polygon points="30.5,130 33.053,130 33.053,151.277 30.5,151.277"/><polygon points="55.181,130 57.734,130 57.734,151.277 55.181,151.277"/><polygon points="30.5,130 35.145,130 57.734,151.277 53.089,151.277"/><polygon points="64.117,130 66.67,130 66.67,151.277 64.117,151.277"/><polygon points="73.053,130 96.883,130 96.883,132.553 73.053,132.553"/><polygon points="83.691,130 86.245,130 86.245,151.277 83.691,151.277"/><polygon points="103.266,130 105.819,130 105.819,151.277 103.266,151.277"/><polygon points="127.947,130 130.5,130 130.5,151.277 127.947,151.277"/><polygon points="103.266,139.362 130.5,139.362 130.5,141.915 103.266,141.915"/></svg>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#how">How we test</a>
+        <a href="#criteria">What we check</a>
+        <a href="#robots">Robots</a>
+        <a href="#rules">Our rules</a>
+        <a href="#about">About</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:dee@nith.ai">dee@nith.ai</a>
+        <span>London, United Kingdom</span>
+      </div>
+      <div>
+        <h4>Company details</h4>
+        <p class="legal">NITH AI LTD · Registered in England and Wales, no. 16974948 · 71-75 Shelton Street, Covent Garden, London WC2H 9JQ</p>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+    <svg class="wordmark" id="wordmark" viewBox="-40 -20 1376 316" aria-hidden="true"></svg>
+    <div class="foot-bottom"><span class="mono">© 2026 NITH AI LTD</span><span class="mono">Independent testing for robot AI</span></div>
+  </footer>
+
+  <script type="module" src="js/story.js?v=36"></script>
+  <script type="module" src="js/cards3d.js?v=2"></script>
+  <script src="main.js?v=2" defer></script>
+</body>
+</html>
