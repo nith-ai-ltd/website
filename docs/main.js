@@ -50,6 +50,7 @@
   }
 
   const wm = document.querySelector("#wordmark");
+  if (!wm) return;
   buildWordmark(wm);
   if (!reduce && "IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
