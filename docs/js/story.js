@@ -396,9 +396,9 @@ new IntersectionObserver((e) => setRunning(e[0].isIntersecting)).observe(story);
 const jump = location.hash.match(/^#p=([\d.]+)/);
 if (jump) forcedP = parseFloat(jump[1]);
 
-// for showing the film hands-free: index.html#play scrolls through the story by itself, about 2 minutes;
+// for showing the film hands-free: index.html#play scrolls through the story by itself, about 90 seconds;
 // #play=6 starts at shot 6. Any scroll, tap or key press hands control back
-const SECS = [4, 8, 9, 16, 13, 13, 13, 9, 9, 10, 9, 7];
+const SECS = [3, 6, 7, 12, 10, 10, 10, 7, 7, 7.5, 6.5, 5];
 // lead: how long to wait before moving (a link gives the first screen time to be read; the button starts at once);
 // cold: how many seconds the first screen takes on the way out
 function autoplay(from = 0, { lead = from ? 600 : 2600, cold = SECS[0] } = {}) {

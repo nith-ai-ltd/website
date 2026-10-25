@@ -60,7 +60,7 @@ a:focus-visible { outline: 2px solid var(--o); outline-offset: 3px; }
 .nav-links a.nav-cta, .nav.is-dark .nav-links a.nav-cta { background: var(--o); color: var(--k); border-color: var(--o); font-weight: 700; padding: 0 26px; }
 
 /* ---------- story: a 3D test lab, filmed */
-.story { position: relative; height: 2100vh; --bar: 52px; }
+.story { position: relative; height: 1600vh; --bar: 52px; }
 .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #0B0B0B; }
 .frame { position: absolute; left: 0; right: 0; top: var(--nav); bottom: var(--bar); overflow: hidden; background: #111111; color: #F2F2F2; }
 #world { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
