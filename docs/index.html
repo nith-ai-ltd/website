@@ -5,6 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NITH · Independent testing for physical AI</title>
   <meta name="description" content="NITH is an independent test lab for physical AI, the AI that runs robots. We measure how often a robot succeeds at a real job, how often a person has to step in, and why it fails.">
+  <link rel="canonical" href="https://nith.ai/">
+  <!-- for Google: who runs the site and the name to show in results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://nith.ai/#website",
+        "url": "https://nith.ai/",
+        "name": "NITH",
+        "alternateName": ["NITH AI", "nith.ai"],
+        "publisher": { "@id": "https://nith.ai/#org" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://nith.ai/#org",
+        "name": "NITH",
+        "legalName": "NITH AI LTD",
+        "url": "https://nith.ai/",
+        "logo": "https://nith.ai/logo.png",
+        "email": "dee@nith.ai",
+        "description": "An independent test lab in London for physical AI, the AI that runs robots.",
+        "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+        "founder": { "@type": "Person", "name": "Deepak Ananthapadman" },
+        "sameAs": ["https://www.linkedin.com/company/nith-ai/", "https://github.com/nith-ai-ltd"]
+      }
+    ]
+  }
+  </script>
   <meta name="theme-color" content="#171717">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -214,22 +244,22 @@
       <div class="cards">
         <div class="card">
           <span class="tag first">First</span>
-          <div class="bot3d" data-robot="arm"><img src="models/cards/arm.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <div class="bot3d" data-robot="arm"><img src="models/cards/arm.webp" alt="A 3D robot arm" width="574" height="478" loading="lazy"></div>
           <h3>Robot arms</h3><p>Picking, packing and sorting at a workstation.</p>
         </div>
         <div class="card">
           <span class="tag">Next</span>
-          <div class="bot3d" data-robot="humanoid"><img src="models/cards/humanoid.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <div class="bot3d" data-robot="humanoid"><img src="models/cards/humanoid.webp" alt="A 3D humanoid robot" width="574" height="478" loading="lazy"></div>
           <h3>Humanoids</h3><p>Manual tasks in warehouses and shops.</p>
         </div>
         <div class="card">
           <span class="tag">Next</span>
-          <div class="bot3d" data-robot="hand"><img src="models/cards/hand.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <div class="bot3d" data-robot="hand"><img src="models/cards/hand.webp" alt="A 3D robot hand" width="574" height="478" loading="lazy"></div>
           <h3>Robot hands</h3><p>Fine grasping of soft, shiny and fragile items.</p>
         </div>
         <div class="card">
           <span class="tag">Later</span>
-          <div class="bot3d" data-robot="mobile"><img src="models/cards/mobile.webp" alt="" width="574" height="478" loading="lazy"></div>
+          <div class="bot3d" data-robot="mobile"><img src="models/cards/mobile.webp" alt="A 3D mobile robot" width="574" height="478" loading="lazy"></div>
           <h3>Mobile robots</h3><p>Robots that drive to the job, then pick.</p>
         </div>
       </div>
